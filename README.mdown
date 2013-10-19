@@ -1,3 +1,5 @@
+ALPHA - this readme is a wishlist, not a feature list...
+
 # Features
 
 ### Create information in a tree format
