@@ -1,0 +1,15 @@
+{% load browser_extras %}
+
+<ul>
+{% recursetree root_nodes %}
+	<li>
+		<h3>{{ node.title }}</h3>
+		{{ node.body }}
+		{% if not node.is_leaf %}
+		<ul>
+			{{ children }}
+		</ul>
+		{% endif %}
+	</li>
+{% endrecursetree %}
+</ul>

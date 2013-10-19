@@ -1,0 +1,33 @@
+{% load browser_extras %}
+
+<ul>
+{% recursetree root_nodes %}
+	<li style="padding: 10px; background-color:{% cycle '#EEEEFF' '#EEFFEE' '#FFEEEE' %}">
+		<a name="node_{{node.id}}"></a>
+		<form method="post" action="?node={{node.id}}&action=edit#node_{{node.id}}">
+			{% csrf_token %}
+			<input type="text" name="title" value="{{ node.title }}" />
+			<br/><textarea name="body" rows="10" cols="80">{{ node.body }}</textarea>
+			<br/><button>Save {{node.breadcrumb_title}}</button>
+		</form>
+		<ul>
+			{{ children }}
+			<li>
+				<a name="node_{{node.id}}"></a>
+				<form method="post" action="?node={{node.id}}&action=create#node_{{node.id}}">
+					{% csrf_token %}
+					<input name="title" type="text" value="" />
+					<button>Add to {{ node.breadcrumb_title }}</button>
+				</form>
+			</li>
+		</ul>
+	</li>
+{% endrecursetree %}
+	<li>
+		<form method="post" action="?action=create">
+			{% csrf_token %}
+			<input name="title" type="text" value="" />
+			<button>Add Root</button>
+		</form>
+	</li>
+</ul>

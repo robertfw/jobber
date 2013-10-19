@@ -1,0 +1,13 @@
+# Features
+
+### Create information in a tree format
+- Nodes have a title, text, an optional parent
+- Nodes can link to other nodes as a "see also"
+
+### Responsive interface for exploring information
+- Fully responsive layout
+- Load all data on initial load - no API needed
+- Breadcrumbs that are "see also" aware
+
+### Interactive tree editor
+- Get away from the django admin panel!
